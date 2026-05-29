@@ -1,6 +1,7 @@
 import {
   GoogleGenerativeAI,
   SchemaType,
+  type Schema,
 } from "@google/generative-ai";
 import { NextResponse } from "next/server";
 
@@ -29,7 +30,7 @@ const REFLECTION_SCHEMA = {
     now_what: { type: SchemaType.STRING },
   },
   required: ["what", "so_what", "now_what"],
-};
+} satisfies Schema;
 
 export async function POST(request: Request) {
   const apiKey = process.env.GEMINI_API_KEY;
